@@ -29,18 +29,18 @@ def test_numero_caracter_1():
 
 # Test 2 El número permitido de caracteres (511) Response Failed
 def test_numero_caracter_511():
-    kit_body = get_kit_body("AbcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdAbcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabC")
+    kit_body = get_user_body("AbcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdAbcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabC")
     positive_asser_kit_body(kit_body)
 
-# Test 3 	El número de caracteres es menor que la cantidad permitida (0) Response 201
+# Test 3 	El número de caracteres es menor que la cantidad permitida (0)
 def test_numero_caracter_0():
     kit_body = get_user_body("")
-    positive_asser_kit_body(kit_body)
+    negative_assert_code400(kit_body)
 
-# Test 4 El número permitido de caracteres (512) Response Failed
+# Test 4 El número permitido de caracteres (512)
 def test_numero_caracter_512():
-    kit_body = get_kit_body("AgbcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdAbcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabC")
-    positive_asser_kit_body(kit_body)
+    kit_body = get_user_body("AgbcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdAbcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabC")
+    negative_assert_code400(kit_body)
 
 # Test 5 Se permiten caracteres especiales:  Response 201
 def test_caracter_especiales():
@@ -57,12 +57,12 @@ def test_numeros_espacios_numeros():
     kit_body = get_user_body("Aaa AA 999")
     positive_asser_kit_body(kit_body)
 
-# Test 8 El parámetro no se pasa en la solicitud:  Response 400
+# Test 8 El parámetro no se pasa en la solicitud: 201 != 400
 def test_blank():
-    kit_body = get_user_body( { })
-    positive_asser_kit_body(kit_body)
+    kit_body = get_user_body({})
+    negative_assert_code400(kit_body)
 
-# Test 9 Se ha pasado un tipo de parámetro diferente (número):  Response 201
+# Test 9 Se ha pasado un tipo de parámetro diferente (número): Actual 201 se esperaba 400
 def test_numeros1():
     kit_body = get_user_body(123)
-    positive_asser_kit_body(kit_body)
+    negative_assert_code400(kit_body)
