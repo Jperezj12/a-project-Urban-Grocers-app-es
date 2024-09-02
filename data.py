@@ -12,4 +12,3 @@ kit_body = {
     "name": "Mi conjunto personalizado",
     "cardId": 1
     }
-

@@ -2,6 +2,11 @@
 ### Grupo:Cohort 12
 ### Estudiante: Jose Luis Perez Castillo
 
+#### Descripción proyecto: Este proyecto del séptimo sprint implica la creación de pruebas automatizadas para el campo "name" en la creación de kits.
+#### Usando Python y Pytest, se verificará que la API responda adecuadamente a distintas entradas, tanto válidas como inválidas.
+#### Las pruebas serán implementadas y ejecutadas localmente, y el código se subirá a GitHub para su revisión.
+
+
 ### ***Steps:***
 Necesitas tener instalados los paquetes pytest y request para ejecutar las pruebas.
 1. Ejecuta todas las pruebas con el comando pytest.
