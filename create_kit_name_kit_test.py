@@ -66,7 +66,6 @@ def test_numeros_espacios_numeros():
     kit_body = get_user_body("Aaa AA 999")
     positive_asser_kit_body(kit_body)
 
-
 # Test 8 El parámetro no se pasa en la solicitud: 500
 def test_blank():
     kit_body = get_user_body({})
